@@ -111,58 +111,6 @@
       color: var(--accent);
     }
 
-    .nav-toggle {
-      display: none;
-      background: transparent;
-      border: none;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      position: relative;
-      z-index: 110;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-toggle span,
-    .nav-toggle span::before,
-    .nav-toggle span::after {
-      content: '';
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: transform 0.25s ease, opacity 0.25s ease;
-      position: relative;
-    }
-
-    .nav-toggle span::before {
-      transform: translateY(-7px);
-    }
-
-    .nav-toggle span::after {
-      transform: translateY(5px);
-    }
-
-    .nav-toggle.open span {
-      background: transparent;
-    }
-
-    .nav-toggle.open span::before {
-      transform: rotate(45deg);
-    }
-
-    .nav-toggle.open span::after {
-      transform: rotate(-45deg);
-    }
-
-    .nav-links.open {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
     /* HERO */
     .hero {
       min-height: 100vh;
@@ -841,81 +789,22 @@
     @media (max-width: 900px) {
       nav {
         padding: 1rem 1.2rem;
-        position: relative;
       }
 
       .nav-logo {
         font-size: 1.4rem;
       }
 
-      .nav-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.7rem;
-        margin-top: 0.8rem;
-        position: absolute;
-        top: 100%;
-        right: 1rem;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        padding: 1rem;
-        width: min(280px, calc(100% - 2rem));
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-8px);
-        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-        z-index: 105;
-      }
-
-      .nav-links.open {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
-
-      .nav-links li {
-        width: 100%;
-      }
-
-      .nav-links a {
-        display: block;
-        width: 100%;
-        padding: 0.8rem 0.5rem;
-        font-size: 0.75rem;
-        text-align: center;
-        letter-spacing: 0.15em;
-      }
-
       .hero {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         grid-template-columns: 1fr;
         padding: 5rem 1.2rem 2rem;
         min-height: 85vh;
       }
 
-      .hero-left {
-        order: 2;
-        width: 100%;
-        align-items: center;
-        text-align: center;
-        padding-right: 0;
-      }
-
       .hero-right {
-        order: 1;
         display: block;
         width: 100%;
-        margin-top: 0;
+        margin-top: 2rem;
       }
 
       .hero-visual {
@@ -1059,38 +948,10 @@
         justify-content: center;
         gap: 0.7rem;
         margin-top: 0.8rem;
-        position: absolute;
-        top: 100%;
-        right: 1rem;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        padding: 1rem;
-        width: min(280px, calc(100% - 2rem));
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-8px);
-        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-        z-index: 105;
-      }
-
-      .nav-links.open {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
-
-      .nav-links li {
-        width: 100%;
       }
 
       .nav-links a {
-        display: block;
-        width: 100%;
-        padding: 0.8rem 0.5rem;
-        font-size: 0.75rem;
-        text-align: center;
-        letter-spacing: 0.15em;
+        font-size: 0.6rem;
       }
 
       .hero {
@@ -1110,22 +971,15 @@
       }
 
       .hero-visual {
-        position: relative;
-        width: min(100%, 360px);
+        width: min(100%, 320px);
         margin: 0 auto;
         height: auto;
       }
 
       .hero-img-frame {
-        position: relative;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
         width: 100%;
         height: auto;
-        min-height: 320px;
-        border-radius: 12px;
+        min-height: 260px;
       }
 
       .hero-img-frame img {
@@ -1134,23 +988,7 @@
       }
 
       .hero-stats {
-        position: static;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 0.8rem;
-        margin-top: 1.5rem;
-        border: 1px solid var(--border);
-        padding: 1rem;
-        background: rgba(17, 17, 24, 0.9);
-      }
-
-      .stat {
-        flex: 1 1 45%;
-      }
-
-      .hero-left {
-        padding-right: 0;
+        display: none;
       }
 
       .hero-stats .stat {
@@ -1447,9 +1285,6 @@
   <!-- NAV -->
   <nav>
     <div class="nav-logo">YS</div>
-    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
-      <span></span>
-    </button>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -1863,33 +1698,6 @@
       });
       el.addEventListener('mouseleave', () => {
         cursor.style.transform = 'scale(1)';
-      });
-    });
-
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (navToggle && navLinks) {
-      navToggle.addEventListener('click', () => {
-        const isOpen = navLinks.classList.toggle('open');
-        navToggle.classList.toggle('open', isOpen);
-        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-
-      document.addEventListener('click', e => {
-        if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
-          navLinks.classList.remove('open');
-          navToggle.classList.remove('open');
-          navToggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('open');
-          navToggle.classList.remove('open');
-          navToggle.setAttribute('aria-expanded', 'false');
-        });
       });
     });
 
