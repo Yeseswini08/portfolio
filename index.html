@@ -36,20 +36,6 @@
       font-family: 'DM Mono', monospace;
       font-weight: 300;
       overflow-x: hidden;
-      cursor: none;
-    }
-
-    /* Custom cursor */
-    .cursor {
-      width: 12px;
-      height: 12px;
-      background: var(--accent);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.15s ease;
-      mix-blend-mode: difference;
     }
 
 
@@ -279,7 +265,6 @@
       text-transform: uppercase;
       text-decoration: none;
       border: none;
-      cursor: none;
       transition: all 0.3s;
     }
 
@@ -337,7 +322,7 @@
     .hero-img-frame img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       filter: grayscale(30%) contrast(1.1);
       opacity: 0.85;
     }
@@ -1057,16 +1042,16 @@
       }
 
       .hero-visual {
-        width: 380px;
-        height: 480px;
+        width: 280px;
+        height: 350px;
         position: relative;
         margin: 0 auto;
       }
 
       .hero-img-frame {
         position: absolute;
-        top: 40px;
-        left: 40px;
+        top: 30px;
+        left: 30px;
         right: 0;
         bottom: 0;
         border: 1px solid var(--border);
@@ -1077,7 +1062,7 @@
       .hero-img-frame img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         filter: grayscale(30%) contrast(1.1);
         opacity: 0.85;
       }
@@ -1086,28 +1071,38 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 180px;
-        height: 180px;
+        width: 120px;
+        height: 120px;
         border: 1px solid var(--accent);
         z-index: -1;
       }
 
       .hero-stats {
-        position: absolute;
-        bottom: -20px;
-        right: -30px;
+        position: relative;
+        bottom: auto;
+        right: auto;
         background: var(--surface2);
         border: 1px solid var(--border);
-        padding: 1.5rem 2rem;
+        padding: 1rem 1.5rem;
         display: flex;
-        gap: 2.5rem;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+        justify-content: space-around;
       }
 
       .stat {
         text-align: center;
-        background: var(--surface2);
-        border: 1px solid var(--border);
-        padding: 1rem;
+        background: transparent;
+        border: none;
+        padding: 0;
+      }
+
+      .stat-num {
+        font-size: 1.5rem;
+      }
+
+      .stat-label {
+        font-size: 0.55rem;
       }
 
       .hero-name {
@@ -1349,6 +1344,34 @@
         font-size: 13px;
       }
 
+      .hero-visual {
+        width: 240px;
+        height: 300px;
+      }
+
+      .hero-img-frame {
+        top: 20px;
+        left: 20px;
+      }
+
+      .hero-accent-box {
+        width: 80px;
+        height: 80px;
+      }
+
+      .hero-stats {
+        padding: 0.8rem 1rem;
+        gap: 1rem;
+      }
+
+      .stat-num {
+        font-size: 1.2rem;
+      }
+
+      .stat-label {
+        font-size: 0.5rem;
+      }
+
       .hero-name {
         font-size: clamp(1.8rem, 6vw, 3rem);
       }
@@ -1394,8 +1417,6 @@
 </head>
 
 <body>
-
-  <div class="cursor" id="cursor"></div>
 
   <!-- NAV -->
   <nav>
@@ -1796,12 +1817,6 @@
             <span class="contact-value">Yeseswini08</span>
           </div>
         </a>
-        <div class="contact-item">
-          <span class="contact-icon">📍</span>
-          <div>
-            <span class="contact-label">Location</span>
-            <span class="contact-value">185, Sivjothi Nagar, Chidambaram</span>
-          </div>
         </div>
       </div>
     </div>
@@ -1828,25 +1843,6 @@
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         mobileMenu.classList.remove('active');
-      });
-    });
-
-    // Custom cursor
-    const cursor = document.getElementById('cursor');
-    let mouseX = 0, mouseY = 0;
-
-    document.addEventListener('mousemove', e => {
-      mouseX = e.clientX; mouseY = e.clientY;
-      cursor.style.left = mouseX - 6 + 'px';
-      cursor.style.top = mouseY - 6 + 'px';
-    });
-
-    document.querySelectorAll('a, button, .skill-card, .project-card, .achievement-item').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(2)';
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
       });
     });
 
